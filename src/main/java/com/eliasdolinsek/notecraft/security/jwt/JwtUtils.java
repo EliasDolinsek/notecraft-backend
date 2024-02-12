@@ -1,6 +1,5 @@
 package com.eliasdolinsek.notecraft.security.jwt;
 
-import java.security.Key;
 import java.util.Date;
 
 import javax.crypto.SecretKey;
@@ -20,11 +19,11 @@ public class JwtUtils {
 
     private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
 
-    @Value("com.eliasdolinsek.notecraft.jwt-secret")
+    @Value("${com.eliasdolinsek.notecraft.jwt-secret}")
     private String jwtSecret;
 
-    @Value("com.eliasdolinsek.notecraft.jwt-expiration-ms")
-    private Long jwtExpirationMs;
+    @Value("${com.eliasdolinsek.notecraft.jwt-expiration-ms}")
+    private int jwtExpirationMs;
 
     public String generateJwtToken(Authentication authentication) {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
